@@ -15,11 +15,11 @@ interface IRequest {
 class UpdateUserAvatarUseCase {
   constructor(
     @inject("UsersRepository")
-    private userRespository: IUsersRepository
+    private userRepository: IUsersRepository
   ) { }
 
   async execute({ user_id, avatar_File }: IRequest): Promise<void> {
-    const user = await this.userRespository.findById(user_id);
+    const user = await this.userRepository.findById(user_id);
     if (!user) {
       throw new AppError("Id does not exists");
     }
@@ -29,7 +29,7 @@ class UpdateUserAvatarUseCase {
     }
 
     user.avatar = avatar_File
-    await this.userRespository.create(user);
+    await this.userRepository.create(user);
 
   }
 

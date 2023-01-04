@@ -1,26 +1,35 @@
 
 import { container } from "tsyringe";
-import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UsersRespository";
+
+import "@shared/container/providers"
+
+import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UsersRepository";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 
-import { CategoriesRepository } from "@modules/cars/infra/typeorm/repositories/CategoriesRespository";
-import { ICategoriesRespository } from "@modules/cars/repositories/ICategoriesRepository"
+import { CategoriesRepository } from "@modules/cars/infra/typeorm/repositories/CategoriesRepository";
+import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository"
 
-import { SpecificationRepository } from "@modules/cars/infra/typeorm/repositories/SpecificationRespository";
-import { ISpecificationRespository } from "@modules/cars/repositories/ISpecificationRespository";
+import { SpecificationRepository } from "@modules/cars/infra/typeorm/repositories/SpecificationRepository";
+import { ISpecificationsRepository } from "@modules/cars/repositories/ISpecificationsRepository";
 
-import { CarsRepository } from "@modules/cars/infra/typeorm/repositories/CarsRespository";
-import { ICarsRespository } from "@modules/cars/repositories/ICarsRepository";
+import { CarsRepository } from "@modules/cars/infra/typeorm/repositories/CarsRepository";
+import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
+
+import { CarsImagesRepository } from "@modules/cars/infra/typeorm/repositories/CarsImagesRepository";
+import { ICarsImagesRepository } from "@modules/cars/repositories/ICarsImagesRepository";
+import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
+import { RentalsRepository } from "@modules/rentals/infra/typeorm/repositories/RentalsRepository";
 
 
-// ICategoriesRespository
-container.registerSingleton<ICategoriesRespository>(
+
+// ICategoriesRepository
+container.registerSingleton<ICategoriesRepository>(
     "CategoriesRepository",
     CategoriesRepository
 );
 
-// ICategoriesRespository
-container.registerSingleton<ISpecificationRespository>(
+// ICategoriesRepository
+container.registerSingleton<ISpecificationsRepository>(
     "SpecificationRepository",
     SpecificationRepository
 );
@@ -29,6 +38,14 @@ container.registerSingleton<IUsersRepository>(
     "UsersRepository", UsersRepository
 )
 
-container.registerSingleton<ICarsRespository>(
+container.registerSingleton<ICarsRepository>(
     "CarsRepository", CarsRepository
+)
+
+container.registerSingleton<ICarsImagesRepository>(
+    "CarsImagesRepository", CarsImagesRepository
+)
+
+container.registerSingleton<IRentalsRepository>(
+    "RentalsRepository", RentalsRepository
 )

@@ -10,18 +10,18 @@ import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepositor
 class CreateUserUseCase {
     constructor(
         @inject("UsersRepository")
-        private usersRespository: IUsersRepository) { }
+        private usersRepository: IUsersRepository) { }
 
     async execute({ name, email, driver_license, password }: ICreateUserDTO): Promise<void> {
 
-        const userAlredyExists = await this.usersRespository.findByEmail(email);
+        const userAlredyExists = await this.usersRepository.findByEmail(email);
 
         if (userAlredyExists) {
             throw new AppError("User alredy exists", 400);
         }
 
         const passwordHash = await hash(password, 8);// criptografar a senha
-        await this.usersRespository.create({ name, email, driver_license, password: passwordHash });
+        await this.usersRepository.create({ name, email, driver_license, password: passwordHash });
     }
 }
 

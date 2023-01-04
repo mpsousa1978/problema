@@ -1,19 +1,19 @@
 
 import { AppError } from "@errors/AppError"
 import { ICreateUserDTO } from "@modules/accounts/dtos/IcreateUserDTO";
-import { UsersRespositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRespositoryInMemory";
+import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./authenticateUserUseCase";
 
 let authenticateUserUseCase: AuthenticateUserUseCase;
-let usersRespositoryInMemory: UsersRespositoryInMemory;
+let usersRepositoryInMemory: UsersRepositoryInMemory;
 let createUserUseCase: CreateUserUseCase
 
 describe("Authenticate User", () => {
   beforeEach(() => {
-    usersRespositoryInMemory = new UsersRespositoryInMemory();
-    authenticateUserUseCase = new AuthenticateUserUseCase(usersRespositoryInMemory);
-    createUserUseCase = new CreateUserUseCase(usersRespositoryInMemory);
+    usersRepositoryInMemory = new UsersRepositoryInMemory();
+    authenticateUserUseCase = new AuthenticateUserUseCase(usersRepositoryInMemory);
+    createUserUseCase = new CreateUserUseCase(usersRepositoryInMemory);
   });
 
 
